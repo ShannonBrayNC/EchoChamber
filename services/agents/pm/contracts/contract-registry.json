@@ -1,0 +1,24 @@
+{
+  "registryVersion": "0.1.0",
+  "updatedAt": "2026-03-23T00:00:00Z",
+  "contracts": [
+    {
+      "symbol": "run_ingestion",
+      "module": "services/ingestion/runner.py",
+      "language": "python",
+      "params": [
+        { "name": "workspace_id", "type": "str", "required": true }
+      ],
+      "returns": "IngestionResult | None",
+      "sideEffects": [
+        "reads workspace configuration",
+        "updates processing state",
+        "writes normalized operational entities"
+      ],
+      "stability": "experimental",
+      "owners": ["platform"],
+      "consumers": ["pm orchestrator", "api"],
+      "tests": []
+    }
+  ]
+}
