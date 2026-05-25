@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PronunciationLesson",
+  "type": "object",
+  "required": ["language", "phrase", "phoneticHint", "practiceChunks"],
+  "properties": {
+    "language": { "type": "string" },
+    "phrase": { "type": "string" },
+    "phoneticHint": { "type": "string" },
+    "practiceChunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["chunk", "hint"],
+        "properties": {
+          "chunk": { "type": "string" },
+          "hint": { "type": "string" },
+          "slowPractice": { "type": "string" }
+        }
+      }
+    }
+  }
+}
