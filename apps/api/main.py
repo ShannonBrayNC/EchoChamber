@@ -5,6 +5,7 @@ from apps.api.routes.speak import router as speak_router
 from apps.api.routes.artifacts import router as artifact_router
 from apps.api.routes.discovery import router as discovery_router
 from apps.api.routes.study import router as study_router
+from apps.api.routes.conversation import router as conversation_router
 from apps.api.middleware.tracing import RequestTracingMiddleware
 from apps.api.middleware.api_key_auth import ApiKeyAuthMiddleware
 from apps.api.middleware.rate_limit import SimpleRateLimitMiddleware
@@ -24,6 +25,7 @@ app.include_router(speak_router, prefix='/api/v1')
 app.include_router(artifact_router, prefix='/api/v1')
 app.include_router(discovery_router, prefix='/api/v1')
 app.include_router(study_router, prefix='/api/v1')
+app.include_router(conversation_router, prefix='/api/v1')
 
 
 @app.get('/health')
@@ -39,6 +41,7 @@ def health():
             'voice-generation',
             'workspace-isolation',
             'adaptive-learning',
-            'study-sessions'
+            'study-sessions',
+            'conversation-tutor'
         ]
     }
