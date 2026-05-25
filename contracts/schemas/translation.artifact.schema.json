@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TranslationArtifact",
+  "type": "object",
+  "required": ["artifactId", "workspaceId", "createdAt"],
+  "properties": {
+    "artifactId": { "type": "string" },
+    "workspaceId": { "type": "string" },
+    "sourceTool": { "type": "string" },
+    "sourceTextHash": { "type": "string" },
+    "provider": { "type": "string" },
+    "voiceId": { "type": "string" },
+    "artifactPath": { "type": "string" },
+    "createdAt": { "type": "string" }
+  }
+}
