@@ -2,11 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "EchoChamberResponse",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "contractVersion",
+    "status",
     "translatedText",
     "targetLanguage",
-    "status"
+    "artifact"
   ],
   "properties": {
     "contractVersion": {
@@ -14,13 +16,12 @@
     },
     "status": {
       "type": "string",
-      "enum": [
-        "success",
-        "partial",
-        "failed"
-      ]
+      "enum": ["success", "partial", "failed"]
     },
     "translatedText": {
+      "type": "string"
+    },
+    "literalTranslation": {
       "type": "string"
     },
     "targetLanguage": {
@@ -33,48 +34,32 @@
       "type": "array",
       "items": {
         "type": "object",
+        "required": ["text", "hint"],
         "properties": {
-          "text": {
-            "type": "string"
-          },
-          "hint": {
-            "type": "string"
-          },
-          "note": {
-            "type": "string"
-          }
+          "text": { "type": "string" },
+          "hint": { "type": "string" },
+          "note": { "type": "string" }
         }
       }
     },
     "audio": {
       "type": "object",
       "properties": {
-        "provider": {
-          "type": "string"
-        },
-        "voiceId": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "durationSeconds": {
-          "type": "number"
-        }
+        "provider": { "type": "string" },
+        "voiceId": { "type": "string" },
+        "artifactPath": { "type": "string" },
+        "durationSeconds": { "type": "number" }
       }
+    },
+    "artifact": {
+      "$ref": "translation.artifact.schema.json"
     },
     "metadata": {
       "type": "object",
       "properties": {
-        "generatedAt": {
-          "type": "string"
-        },
-        "sourceTool": {
-          "type": "string"
-        },
-        "traceId": {
-          "type": "string"
-        }
+        "generatedAt": { "type": "string" },
+        "sourceTool": { "type": "string" },
+        "traceId": { "type": "string" }
       }
     }
   }
