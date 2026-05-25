@@ -1,30 +1,34 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ShannonBrayNC/EchoChamber/contracts/schemas/echochamber.request.schema.json",
   "title": "EchoChamberRequest",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "contractVersion",
     "sourceTool",
     "requestType",
     "sourceLanguage",
     "targetLanguage",
-    "sourceText"
+    "sourceText",
+    "provenance"
   ],
   "properties": {
     "contractVersion": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
     },
     "sourceTool": {
       "type": "string",
       "enum": [
+        "manual",
         "ets",
         "opshelm",
         "christina",
         "signalforge",
         "content-engine",
         "echoliving",
-        "lantern",
-        "manual"
+        "lantern"
       ]
     },
     "requestType": {
@@ -33,66 +37,86 @@
         "translate",
         "translate_and_voice",
         "pronunciation_lesson",
-        "repo_translation",
-        "dialogue_generation"
+        "repo_artifact_translation",
+        "dialogue_translation"
       ]
     },
     "sourceLanguage": {
-      "type": "string"
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 16
     },
     "targetLanguage": {
-      "type": "string"
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 16
     },
     "sourceText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "personal",
+        "business",
+        "operations",
+        "evidence",
+        "governance",
+        "creative",
+        "hospitality",
+        "technical"
+      ],
+      "default": "personal"
+    },
+    "audience": {
+      "type": "string"
+    },
+    "tone": {
       "type": "string"
     },
     "options": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
-        "includePhonetics": {
-          "type": "boolean"
-        },
-        "includeAudio": {
-          "type": "boolean"
-        },
-        "preserveFormatting": {
-          "type": "boolean"
-        },
-        "voiceId": {
-          "type": "string"
-        },
-        "learningMode": {
-          "type": "boolean"
-        }
+        "includePhonetics": { "type": "boolean", "default": false },
+        "includeAudio": { "type": "boolean", "default": false },
+        "preserveFormatting": { "type": "boolean", "default": true },
+        "preserveMarkdown": { "type": "boolean", "default": true },
+        "returnAlignment": { "type": "boolean", "default": false },
+        "returnLiteralTranslation": { "type": "boolean", "default": false },
+        "saveArtifact": { "type": "boolean", "default": true }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": "string", "enum": ["elevenlabs"], "default": "elevenlabs" },
+        "voiceId": { "type": "string" },
+        "voiceLabel": { "type": "string" },
+        "modelId": { "type": "string" },
+        "consentId": { "type": "string" },
+        "requiresConsent": { "type": "boolean", "default": true }
       }
     },
     "provenance": {
       "type": "object",
+      "additionalProperties": false,
+      "required": ["workspaceId", "artifactType", "sourceId"],
       "properties": {
-        "workspaceId": {
-          "type": "string"
-        },
-        "artifactType": {
-          "type": "string"
-        },
-        "sourceId": {
-          "type": "string"
-        }
+        "workspaceId": { "type": "string", "minLength": 1 },
+        "tenantId": { "type": "string" },
+        "artifactType": { "type": "string", "minLength": 1 },
+        "sourceId": { "type": "string", "minLength": 1 },
+        "sourceUri": { "type": "string" },
+        "correlationId": { "type": "string" },
+        "requestedBy": { "type": "string" }
       }
     },
-    "consent": {
+    "metadata": {
       "type": "object",
-      "properties": {
-        "voiceCloneApproved": {
-          "type": "boolean"
-        },
-        "approvedBy": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": "string"
-        }
-      }
+      "additionalProperties": true
     }
   }
 }
