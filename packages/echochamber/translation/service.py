@@ -1,17 +1,21 @@
-from typing import Dict
-
-
-POLISH_STUBS: Dict[str, str] = {
-    'I am thinking about you.': 'Myślę o tobie.',
-    'Good morning': 'Dzień dobry',
-    'I miss you': 'Tęsknię za tobą'
-}
+from packages.echochamber.translation.providers import get_translation_provider
+from packages.echochamber.providers.retry import ProviderRetryPolicy
+from packages.echochamber.providers.timeout import timeout
 
 
 class TranslationService:
 
-    def translate(self, text: str, source_language: str, target_language: str) -> str:
-        if target_language.lower() == 'pl':
-            return POLISH_STUBS.get(text, f'[pl translation stub] {text}')
+    def __init__(self):
+        self.provider = get_translation_provider()
+        self.retry_policy = ProviderRetryPolicy()
 
-        return f'[{target_language} translation stub] {text}'
+    def translate(self, text: str, source_language: str, target_language: str) -> str:
+        def operation():
+            with timeout(30):
+                return self.provider.translate(
+                    text,
+                    source_language,
+                    target_language
+                )
+
+        return self.retry_policy.run(operation)
