@@ -1,0 +1,32 @@
+[
+  {
+    "english": "I am thinking about you.",
+    "polish": "Myślę o tobie.",
+    "phonetic": "MYSH-leh oh TOH-byeh",
+    "note": "ś sounds like a soft sh"
+  },
+  {
+    "english": "Good morning",
+    "polish": "Dzień dobry",
+    "phonetic": "jen DOH-bri",
+    "note": "dzień begins with a soft j sound"
+  },
+  {
+    "english": "I miss you",
+    "polish": "Tęsknię za tobą",
+    "phonetic": "TEN-sknyeh za TOH-bon",
+    "note": "ę is nasalized"
+  },
+  {
+    "english": "You are beautiful",
+    "polish": "Jesteś piękna",
+    "phonetic": "YES-tesh PYENK-na",
+    "note": "ę can sound close to en"
+  },
+  {
+    "english": "You are my lantern",
+    "polish": "Jesteś moją latarnią",
+    "phonetic": "YES-tesh MOH-yon la-TAR-nyon",
+    "note": "ą is nasalized"
+  }
+]
