@@ -1,0 +1,35 @@
+{
+  "registryVersion": "1.0.0",
+  "updatedAt": "2026-05-25",
+  "owner": "EchoChamber",
+  "contracts": [
+    {
+      "name": "translate",
+      "stability": "stable",
+      "requestSchema": "contracts/schemas/echochamber.request.schema.json",
+      "responseSchema": "contracts/schemas/echochamber.response.schema.json",
+      "consumers": ["opshelm", "christina", "lantern", "echoliving"]
+    },
+    {
+      "name": "translate_and_voice",
+      "stability": "stable",
+      "requestSchema": "contracts/schemas/echochamber.request.schema.json",
+      "responseSchema": "contracts/schemas/echochamber.response.schema.json",
+      "consumers": ["christina", "content-engine", "echoliving"]
+    },
+    {
+      "name": "pronunciation_lesson",
+      "stability": "beta",
+      "requestSchema": "contracts/schemas/echochamber.request.schema.json",
+      "responseSchema": "contracts/schemas/pronunciation.lesson.schema.json",
+      "consumers": ["manual", "christina", "lantern"]
+    },
+    {
+      "name": "repo_artifact_translation",
+      "stability": "beta",
+      "requestSchema": "contracts/schemas/echochamber.request.schema.json",
+      "responseSchema": "contracts/schemas/translation.artifact.schema.json",
+      "consumers": ["ets", "opshelm", "signalforge", "content-engine"]
+    }
+  ]
+}
