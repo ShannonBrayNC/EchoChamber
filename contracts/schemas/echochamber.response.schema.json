@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EchoChamberResponse",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "translatedText",
+    "targetLanguage",
+    "status"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "partial",
+        "failed"
+      ]
+    },
+    "translatedText": {
+      "type": "string"
+    },
+    "targetLanguage": {
+      "type": "string"
+    },
+    "phoneticHint": {
+      "type": "string"
+    },
+    "practiceChunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "voiceId": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "durationSeconds": {
+          "type": "number"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "generatedAt": {
+          "type": "string"
+        },
+        "sourceTool": {
+          "type": "string"
+        },
+        "traceId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
