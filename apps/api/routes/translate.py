@@ -37,5 +37,9 @@ def translate(payload: EchoChamberRequest):
         'status': 'success',
         'translatedText': translated,
         'targetLanguage': payload.targetLanguage,
-        'artifact': artifact
+        'artifact': artifact,
+        'metadata': {
+            'sourceTool': payload.sourceTool,
+            'correlationId': payload.provenance.correlationId
+        }
     }
