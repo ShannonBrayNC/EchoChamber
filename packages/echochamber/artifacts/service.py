@@ -50,3 +50,17 @@ class ArtifactService:
             json.dump(payload, handle, indent=2)
 
         return payload
+
+    def get_artifact(self, artifact_id: str, workspace_id: str):
+        target = self.artifacts / f'{artifact_id}.json'
+
+        if not target.exists():
+            return None
+
+        with open(target, 'r', encoding='utf-8') as handle:
+            payload = json.load(handle)
+
+        if payload.get('workspaceId') != workspace_id:
+            raise PermissionError('workspace mismatch')
+
+        return payload
