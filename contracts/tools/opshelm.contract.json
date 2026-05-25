@@ -1,0 +1,25 @@
+{
+  "tool": "opshelm",
+  "contractVersion": "1.0.0",
+  "purpose": "Translate customer briefs, meeting prep, ticket summaries, and promise reminders.",
+  "allowedRequestTypes": [
+    "translate",
+    "translate_and_voice"
+  ],
+  "defaultTargetLanguages": [
+    "pl",
+    "es",
+    "fr",
+    "de"
+  ],
+  "requiredMetadata": [
+    "workspaceId",
+    "artifactType",
+    "sourceId"
+  ],
+  "rules": [
+    "No cross-workspace translation leakage.",
+    "Customer content is treated as sensitive operational data.",
+    "Voice generation defaults to disabled for customer artifacts unless explicitly requested."
+  ]
+}
