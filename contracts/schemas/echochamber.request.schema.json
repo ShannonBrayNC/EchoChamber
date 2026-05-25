@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EchoChamberRequest",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "sourceTool",
+    "requestType",
+    "sourceLanguage",
+    "targetLanguage",
+    "sourceText"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string"
+    },
+    "sourceTool": {
+      "type": "string",
+      "enum": [
+        "ets",
+        "opshelm",
+        "christina",
+        "signalforge",
+        "content-engine",
+        "echoliving",
+        "lantern",
+        "manual"
+      ]
+    },
+    "requestType": {
+      "type": "string",
+      "enum": [
+        "translate",
+        "translate_and_voice",
+        "pronunciation_lesson",
+        "repo_translation",
+        "dialogue_generation"
+      ]
+    },
+    "sourceLanguage": {
+      "type": "string"
+    },
+    "targetLanguage": {
+      "type": "string"
+    },
+    "sourceText": {
+      "type": "string"
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "includePhonetics": {
+          "type": "boolean"
+        },
+        "includeAudio": {
+          "type": "boolean"
+        },
+        "preserveFormatting": {
+          "type": "boolean"
+        },
+        "voiceId": {
+          "type": "string"
+        },
+        "learningMode": {
+          "type": "boolean"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "workspaceId": {
+          "type": "string"
+        },
+        "artifactType": {
+          "type": "string"
+        },
+        "sourceId": {
+          "type": "string"
+        }
+      }
+    },
+    "consent": {
+      "type": "object",
+      "properties": {
+        "voiceCloneApproved": {
+          "type": "boolean"
+        },
+        "approvedBy": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
