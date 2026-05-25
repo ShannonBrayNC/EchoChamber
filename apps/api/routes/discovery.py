@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 from fastapi import APIRouter
+from packages.echochamber.providers.health import get_provider_health
 
 router = APIRouter()
 
@@ -42,6 +43,11 @@ def providers():
             'elevenlabs'
         ]
     }
+
+
+@router.get('/provider-health')
+def provider_health():
+    return get_provider_health()
 
 
 @router.get('/phrasebook')
