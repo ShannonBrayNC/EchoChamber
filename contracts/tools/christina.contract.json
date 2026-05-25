@@ -1,0 +1,19 @@
+{
+  "tool": "christina",
+  "contractVersion": "1.0.0",
+  "purpose": "Provide multilingual business assistant messaging and conversational responses.",
+  "allowedRequestTypes": [
+    "translate",
+    "translate_and_voice",
+    "dialogue_generation"
+  ],
+  "voiceDefaults": {
+    "tone": "professional_warm",
+    "learningFriendly": true
+  },
+  "rules": [
+    "Do not generate deceptive voice interactions.",
+    "Business outputs should preserve tone and intent.",
+    "Customer-facing audio must remain auditable."
+  ]
+}
